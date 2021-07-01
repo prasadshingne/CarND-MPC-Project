@@ -50,19 +50,25 @@ The simulator sends the telemetry and track waypoint data back to the controller
 Note: regardless of the changes you make, the project must be buildable using
 cmake and make!
 
-####* Model: 
+#### Model: 
 The kinematic model provides the x and y coordinates, heading angle, velocity, cross-track error and heading angle error as shown below - 
 
 <img src="model_eqns.png" width="500" height="375" />
 
-####* Timestep length and elapsed duration (N & dt): 
+#### Timestep length and elapsed duration (N & dt): 
 The chosen values for N and dt are 10 and 0.1 respectively which were suggested in the starter code. These values imply that the controller is optimizing over a horizon of 1 second descretized by 10 points. Several other value pairs were tested but these values produced the best results.
 
-####* Polynomial fitting and MPC processing:
-The waypoints are transformed to the vehicle coordinates (lines 63 to 68 in main.cpp) which simplifies the fitting process as the fitting then starts at vehilce x & y origin (0, 0) and heading angle is zero.
+#### Polynomial fitting and MPC processing:
+The waypoints are transformed to the vehicle coordinates ([lines 63 to 69 in main.cpp](https://github.com/prasadshingne/CarND-MPC-Project/blob/577f5eeb6d742c39733d15bb215b7e2c4c948481/src/main.cpp#L63)) which simplifies the fitting process as the fitting then starts at vehilce x & y origin (0, 0) and heading angle is zero.
 
-####* Model predictive control with latency:
-The kinematic model includes the actuator values from the previous timestep but with a delay of 100ms the actuator inputs are applied another timestep later. This is included in lines 104 to 107 in MPC.cpp.
+#### Model predictive control with latency:
+The kinematic model includes the actuator values from the previous timestep but with a delay of 100ms the actuator inputs are applied another timestep later. This is included in [lines 104 to 107 in MPC.cpp](https://github.com/prasadshingne/CarND-MPC-Project/blob/577f5eeb6d742c39733d15bb215b7e2c4c948481/src/MPC.cpp#L104).
+
+## Simulation
+The vehicle successfuly drives a lap around the track with the MPC and the video is shared vis YouTube.
+
+<a href="https://youtu.be/jFxTYomM2n0" target="_blank"><img src="http://img.youtube.com/vi/jFxTYomM2n0/0.jpg" alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
+
 
 
 
